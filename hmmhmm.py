@@ -15,6 +15,8 @@ import string
 import matplotlib.font_manager
 import os
 from os import path
+fm = matplotlib.font_manager
+fm._get_fontconfig_fonts.cache_clear()
 plt.rc('font', family='Segoe UI Emoji')
 
 extract = URLExtract()
