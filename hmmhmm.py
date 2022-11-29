@@ -17,6 +17,7 @@ import os
 from os import path
 fm = matplotlib.font_manager
 fm._get_fontconfig_fonts.cache_clear()
+plt.set_loglevel('WARNING') 
 plt.rc('font', family='Segoe UI Emoji')
 
 extract = URLExtract()
@@ -154,6 +155,15 @@ def monthly_timeline(selected_user,df):
     timeline['time']=time
         
     return timeline
+
+def daily_timeline(selected_user,df):
+
+    if selected_user != 'Overall':
+        df = df[df['user'] == selected_user]
+
+    daily_timeline = df.groupby('only_date').count()['message'].reset_index()
+
+    return daily_timeline
 
 def week_activity_map(selected_user,df):
     

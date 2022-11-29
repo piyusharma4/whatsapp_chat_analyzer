@@ -55,6 +55,7 @@ if file is not None:
             
             
         #timeline
+        st.title("Monthly Timeline")
         timeline=hmmhmm.monthly_timeline(selected_user, df)
         fig,ax=plt.subplots()
         plt.plot(timeline['time'],timeline['message'],color='green')
@@ -64,6 +65,14 @@ if file is not None:
         y=timeline['message']
         for index in range(0,len(x)):
             ax.text(x[index], y[index], y[index], size=6)
+        st.pyplot(fig)
+
+                # daily timeline
+        st.title("Daily Timeline")
+        daily_timeline = hmmhmm.daily_timeline(selected_user, df)
+        fig, ax = plt.subplots()
+        ax.plot(daily_timeline['only_date'], daily_timeline['message'], color='black')
+        plt.xticks(rotation='vertical')
         st.pyplot(fig)
         
         
