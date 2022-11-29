@@ -12,7 +12,7 @@ import emoji
 import re
 import matplotlib.pyplot as plt
 import string
-import io
+import matplotlib.font_manager
 import os
 from os import path
 plt.rc('font', family='Segoe UI Emoji')
