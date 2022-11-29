@@ -68,16 +68,7 @@ def create_wordcloud(selected_user,df):
     for message in df['message']:
         emojis.extend(emoji.emoji_list(message))
     
-    def remove_stopwords(msg):
-        y=[]
-        for word in msg.lower().split():
-            if word not in stop_words and word not in [i['emoji'] for i in emojis]:
-                y.append(word)
-        return " ".join(y)
     
-    
-    
-
     d = path.dirname(__file__) if "__file__" in locals() else os.getcwd()
     font_path = path.join(d,'seguiemj.ttf')
     
@@ -149,7 +140,7 @@ def emoji_analysis(selected_user,df):
         
     emojis=[]
     for message in df['message']:
-        emojis.extend([c for c in message if c in emoji.UNICODE_EMOJI_ENGLISH])
+        emojis.extend([c for c in message if c in emoji.UNICODE_EMOJI['en']])
         
     emoji_df= pd.DataFrame(Counter(emojis).most_common(len(Counter(emojis))))
     return emoji_df
