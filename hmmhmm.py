@@ -63,12 +63,7 @@ def create_wordcloud(selected_user,df):
     temp =df[df['user']!= 'group notification']
     temp=temp[temp['message'] != '<Media omitted>\n']
     
-    #get all emojis
-    emojis=[]
-    for message in df['message']:
-        emojis.extend(emoji.emoji_list(message))
-    
-    
+   
     d = path.dirname(__file__) if "__file__" in locals() else os.getcwd()
     font_path = path.join(d,'seguiemj.ttf')
     
